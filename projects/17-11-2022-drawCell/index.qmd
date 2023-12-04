@@ -1,0 +1,21 @@
+---
+title: "drawCell"
+description: "cell pictures in R"
+author:
+  - name: Álvaro Sánchez
+    url: https://svalvaro.github.io/
+date: 03-10-2022
+categories: [R, life sciences, shiny]
+image: drawcell.png
+draft: false 
+freeze: true
+---
+
+![](drawcell_shiny.png){fig-align="center"}
+
+This was originally a proof of concept, check out the [Linkedin post](https://www.linkedin.com/feed/update/urn:li:activity:6833816928826482689/){target="_blank"}.
+It was later improved with the help of a colleague, (_thanks Recle!_). 
+You can learn more about it in the [blog post](https://appsilon.com/drawcell-app-for-drawing-cells/?utm_medium=social&utm_source=linkedin&utm_campaign=){target="_blank"} that we created at Appsilon.
+
+
+Code in [GitHub](https://github.com/svalvaro/drawCell){target="_blank"}

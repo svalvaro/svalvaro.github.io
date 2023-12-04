@@ -1,0 +1,12 @@
+---
+title: "Projects"
+listing: 
+  contents: projects 
+  type: grid
+  sort: "date desc"
+  categories: true
+---
+  
+During the last years, the vast majority of my work is stored in private
+repositories and even private GitHub/GitLab accounts. So this part will be quite empty for now :(
+

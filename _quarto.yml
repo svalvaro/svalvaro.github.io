@@ -11,6 +11,7 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
+      - projects.qmd
       - posts.qmd
     right:
       - cv.qmd
@@ -23,6 +24,7 @@ website:
   page-footer:
     background: light
     left: Copyright 2023, Álvaro Sánchez
+    right: Last updated 12-2023
 format:
   html:
     theme:
