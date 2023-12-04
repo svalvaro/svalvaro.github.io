@@ -74,7 +74,7 @@
     "href": "projects.html",
     "title": "Projects",
     "section": "",
-    "text": "During the last years, the vast majority of my work is stored in private repositories and even private GitHub/GitLab accounts. So this part will be quite empty for now :(\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndrawCell\n\n\n\nR\n\n\nlife sciences\n\n\nshiny\n\n\n\ncell pictures in R\n\n\n\nÁlvaro Sánchez\n\n\nOct 3, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProteoViewer\n\n\n\nR\n\n\nlife sciences\n\n\nshiny\n\n\nproteomics\n\n\n\nAnalyse peptide intensities from proteomics LC-MS/MS experiment.\n\n\n\nÁlvaro Sánchez\n\n\nMar 2, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "During the last years, the vast majority of my work is stored in private repositories and even private GitHub/GitLab accounts. So this part will be quite empty for now :(\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndrawCell\n\n\n\nR\n\n\nlife sciences\n\n\nshiny\n\n\n\ncell pictures in R\n\n\n\nÁlvaro Sánchez\n\n\nOct 10, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProteoViewer\n\n\n\nR\n\n\nlife sciences\n\n\nshiny\n\n\nproteomics\n\n\n\nAnalyse peptide intensities from proteomics LC-MS/MS experiment.\n\n\n\nÁlvaro Sánchez\n\n\nFeb 3, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMQmetrics\n\n\n\nR\n\n\nlife sciences\n\n\nproteomics\n\n\n\nReporting the quality control of proteomics experiments\n\n\n\nÁlvaro Sánchez\n\n\nJan 1, 2022\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "projects/17-11-2022-drawCell/index.html",
@@ -89,5 +89,12 @@
     "title": "ProteoViewer",
     "section": "",
     "text": "This is an application that allows the user to analyse peptide intensities from a LC-MS/MS experiment.\nHere is the repo. However, it’s no longer maintained."
+  },
+  {
+    "objectID": "projects/10-01-2022-mqmetrics/index.html",
+    "href": "projects/10-01-2022-mqmetrics/index.html",
+    "title": "MQmetrics",
+    "section": "",
+    "text": "This is an R packaged aimed to check the quality control in a typical protemics experiment. It was released with Bioconductor. Here is the repo."
   }
 ]

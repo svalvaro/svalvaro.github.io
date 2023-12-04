@@ -4,7 +4,7 @@ description: "cell pictures in R"
 author:
   - name: Álvaro Sánchez
     url: https://svalvaro.github.io/
-date: 10-03-2022
+date: 10-10-2022
 categories: [R, life sciences, shiny]
 image: drawcell.png
 draft: false 

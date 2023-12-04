@@ -1,0 +1,18 @@
+---
+title: "MQmetrics"
+description: "Reporting the quality control of proteomics experiments"
+author:
+  - name: Álvaro Sánchez
+    url: https://svalvaro.github.io/
+date: 01-01-2022
+categories: [R, life sciences, proteomics]
+image: mqmetrics.png
+draft: false 
+freeze: true
+---
+
+![](mqmetrics.png){fig-align="center"}
+
+This is an R packaged aimed to check the quality control in a typical protemics experiment. 
+It was released with [Bioconductor](https://bioconductor.org/packages/3.14/bioc/html/MQmetrics.html){target="_blank"}. 
+Here is the [repo](https://github.com/svalvaro/MQmetrics){target="_blank"}.
