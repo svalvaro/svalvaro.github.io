@@ -1,0 +1,18 @@
+---
+title: "ProteoViewer"
+description: "Analyse peptide intensities from proteomics LC-MS/MS experiment."
+author:
+  - name: Álvaro Sánchez
+    url: https://svalvaro.github.io/
+date: 03-10-2022
+categories: [R, life sciences, shiny, proteomics]
+image: proteoviewer.png
+draft: false 
+freeze: true
+---
+
+![](proteoviewer.png){fig-align="center"}
+
+This is an application that allows the user to analyse peptide intensities from a LC-MS/MS experiment. 
+
+Here is the [repo](https://github.com/svalvaro/ProteoViewer){target="_blank"}. However, it's no longer maintained.

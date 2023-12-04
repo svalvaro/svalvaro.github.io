@@ -74,7 +74,7 @@
     "href": "projects.html",
     "title": "Projects",
     "section": "",
-    "text": "During the last years, the vast majority of my work is stored in private repositories and even private GitHub/GitLab accounts. So this part will be quite empty for now :(\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndrawCell\n\n\n\nR\n\n\nlife sciences\n\n\nshiny\n\n\n\ncell pictures in R\n\n\n\nÁlvaro Sánchez\n\n\nMar 10, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "During the last years, the vast majority of my work is stored in private repositories and even private GitHub/GitLab accounts. So this part will be quite empty for now :(\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndrawCell\n\n\n\nR\n\n\nlife sciences\n\n\nshiny\n\n\n\ncell pictures in R\n\n\n\nÁlvaro Sánchez\n\n\nMar 10, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProteoViewer\n\n\n\nR\n\n\nlife sciences\n\n\nshiny\n\n\n\nAnalyse peptide intensities from proteomics LC-MS/MS experiment.\n\n\n\nÁlvaro Sánchez\n\n\nMar 10, 2022\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "projects/17-11-2022-drawCell/index.html",
@@ -82,5 +82,12 @@
     "title": "drawCell",
     "section": "",
     "text": "This was originally a proof of concept, check out the Linkedin post. It was later improved with the help of a colleague, (thanks Recle!). You can learn more about it in the blog post that we created at Appsilon.\nCode in GitHub"
+  },
+  {
+    "objectID": "projects/01-02-2022-proteoviewer/index.html",
+    "href": "projects/01-02-2022-proteoviewer/index.html",
+    "title": "ProteoViewer",
+    "section": "",
+    "text": "This is an application that allows the user to analyse peptide intensities from a LC-MS/MS experiment.\nHere is the repo. However, it’s no longer maintained."
   }
 ]
