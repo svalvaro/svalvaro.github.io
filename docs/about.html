@@ -36,12 +36,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -111,7 +109,6 @@ ul.task-list li input[type="checkbox"] {
   </li>  
 </ul>
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
@@ -155,10 +152,9 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="fa-code-titlecode-symbol-profession" class="level2">
 <h2 class="anchored" data-anchor-id="fa-code-titlecode-symbol-profession"><i class="fa-solid fa-code" title="Code symbol" aria-label="code"></i> Profession</h2>
-<p>Currently, I am working as a R developer at <a href="https://appsilon.com" target="_blank">Appsilon</a>. I am focused on creating web applications focused on data analysis and data visualization for pharmaceutical companies, such as Merck, J&amp;J or Genmab. Usually the typical <em>tools</em> that I use for these are R, CSS, HTML, SQL and Javascript. This is a job I love doing; it combines my interests of life sciences and programming.</p>
-<p>I am a curious person by heart; I need to understand the <em>how</em> and <em>why</em> of things. That’s why after my bachelor in Biotechnology, I decided to study a master in <em>Genetics and Evolution</em>. This fascinating world led me to move to Prague, Czech Republic. There, I studied the genetics of Mice and its metabolism for a couple of years. I slowly became a self-taught programmer and I started to work as a bioinformatician in the proteomics field I discovered <a href="https://www.rstudio.com/products/shiny/" target="_blank">R Shiny</a> and quickly started to create apps for my former lab, later Appsilon discovered me, reaching the present.</p>
-<p>During my career I had to learn nI love learning, I’m constanly reading and updating myself. Usually, I learn by creating small PoC (Proof of Concepts).</p>
-<p>I am usually experimenting with (typically small) proof of concepts. This has became the most productive (and funb) way of learning. I’ll never forget when I was tinkering around with APIs, I created an R package that went <em>kinda</em> viral on <a href="https://www.linkedin.com/posts/svalvaro_rprogramming-softwaredev-cellbiology-activity-6833816928826482689-JAgW?utm_source=share&amp;utm_medium=member_desktop" target="_blank">Linkedin</a>.</p>
+<p>Currently, I am working as an R developer at <a href="https://appsilon.com" target="_blank">Appsilon</a>. I am focused on creating web applications focused on data analysis and data visualization for pharmaceutical companies, such as Merck, J&amp;J or Genmab. Usually, the typical <em>tools</em> that I use for these are R, CSS, HTML, SQL and Javascript. This is a job I love doing; it combines my interests in life sciences and programming.</p>
+<p>I am a curious person by heart; I need to understand the <em>how</em> and <em>why</em> of things. That’s why after my bachelor’s in Biotechnology, I decided to study a master’s in <em>Genetics and Evolution</em>. This fascinating world led me to move to Prague, Czech Republic. There, I studied the genetics of Mice and their metabolism for a couple of years. I slowly became a self-taught programmer and I started to work as a bioinformatician in the proteomics field I discovered <a href="https://www.rstudio.com/products/shiny/" target="_blank">R Shiny</a> and quickly started to create apps for my former lab, later Appsilon discovered me, reaching the present.</p>
+<p>I love learning by creating proof of concepts (it’s fun!). I’ll never forget when I was tinkering around with APIs, I created an R package that went kinda viral on <a href="https://www.linkedin.com/posts/svalvaro_rprogramming-softwaredev-cellbiology-activity-6833816928826482689-JAgW?utm_source=share&amp;utm_medium=member_desktop" target="_blank">Linkedin</a>.</p>
 
 
 </section>
@@ -184,121 +180,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  let localAlternateSentinel = 'alternate';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
