@@ -1,0 +1,35 @@
+project:
+  type: website
+
+website:
+  site-url: https://svalvaro.github.io/
+  title: ""
+  favicon: images/me_drawing.png
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+      - posts.qmd
+    right:
+      - cv.qmd
+      - icon: linkedin
+        href: "https://www.linkedin.com/in/svalvaro/"
+        target: "_blank"
+      - icon: github
+        href: "https://github.com/svalvaro"
+        target: "_blank"
+  page-footer:
+    background: light
+    left: Copyright 2023, Álvaro Sánchez
+format:
+  html:
+    theme:
+      #ark: cyborg
+      light: minty
+    css: styles.css
+    mainfont: Nunito
+    toc: true
+
+editor: source
+

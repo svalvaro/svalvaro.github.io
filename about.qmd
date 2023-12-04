@@ -1,0 +1,19 @@
+---
+title: "About"
+subtitle: "a bit more about me"
+title-block-banner: true
+---
+
+## {{< fa code title="Code symbol">}} Profession
+
+Currently, I am working as a R developer at [Appsilon](https://appsilon.com){target="_blank"}. I am focused on 
+creating web applications focused on data analysis and data visualization for pharmaceutical companies, such as Merck, J&J or Genmab. Usually the typical _tools_ that I use for these are R, CSS, HTML, SQL and Javascript.
+This is a job I love doing; it combines my interests of life sciences and programming.
+
+I am a curious person by heart; I need to understand the _how_ and _why_ of things. That's why after my bachelor in Biotechnology, I decided to study a master in _Genetics and Evolution_. This fascinating world led me to move to Prague, Czech Republic. There, I studied the genetics of Mice and its metabolism for a couple of years. I slowly became a self-taught programmer and I started to work as a bioinformatician in the proteomics field I discovered 
+[R Shiny](https://www.rstudio.com/products/shiny/){target="_blank"} and quickly started to create apps for my former lab, later Appsilon discovered me, reaching the present.
+
+During my career I had to learn nI love learning, I'm constanly reading and updating myself. Usually, I learn by creating small PoC (Proof of Concepts). 
+
+I am usually experimenting with (typically small) proof of concepts. This has became the most productive (and funb) way of learning. I'll never forget when I was tinkering around with APIs, I created an R package that went _kinda_ viral on
+[Linkedin](https://www.linkedin.com/posts/svalvaro_rprogramming-softwaredev-cellbiology-activity-6833816928826482689-JAgW?utm_source=share&utm_medium=member_desktop){target="_blank"}.

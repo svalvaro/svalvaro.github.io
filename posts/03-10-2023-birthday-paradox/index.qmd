@@ -1,0 +1,158 @@
+---
+title: "Simulating the Birthday Paradox"
+description: "I couldn't believe the birthday paradox, so I tested it!"
+author:
+  - name: Álvaro Sánchez
+    url: https://svalvaro.github.io/
+date: 03-10-2023
+categories: [R, echarts, simulation]
+citation: 
+  url: https://svalvaro.github.io/posts/03-10-2023/ 
+image: birthday-cake.png
+draft: false 
+freeze: true
+---
+
+Paradoxes are named as such because they are counterintuitive. And this gives us, data-curious people, an excellent chance to play around with them.
+
+**How many people are needed so the probability that at least, two of them share a birthday is 50%?**
+
+I suggest the reader stop for a couple of minutes and think about it. When I learned the answer, I was so surprised that I had to test it to believe it.
+
+Go to [Results](#results) if you just want to know what is the probability.
+
+## Plan
+
+The idea is simple. I’ll create multiple groups from two to n number of people. For each group, I'll count how many times at least two people share a birthday. Then repeat this process multiple times (_y_), to obtain reproducible results
+
+So if **_n_  = 4**, means a group of four people, and **_y_ = 5**, means to check the probabilities three times. The simulation will be like this:
+
+- Choose two random people (_n - 2_), do they share a birthday? --> Count the result. Repeat _y_ times. Calculate the probability for a group of two people.
+- Choose three random people (_n - 1_), do at least two of them share a birthday? --> Count the result. Repeat _y_ times. Calculate the probability for a group of three people.
+- Choose four random people (_n_), do at least two of them share a birthday?? --> Count the result. Repeat _y_ times. Calculate  the probability for a group of four people.
+
+
+For each group, calculating the probability is simple. For example, if in the group of four people, only there was a simulation were people shared birthdays but no shared birthdays in the other four, the probability would be 1/5 = 20%.
+
+
+## Simulation   
+
+Let's select bigger groups of up to 80 people, and let's check them 1000 times each.
+
+```{r}
+number_people <- 80
+number_tests <- 1000
+```
+
+We need a function that creates random birthdays for a group of `n` people.
+
+```{r}
+generate_birthdays <- function(n_people_group) {
+  round(runif(n = n_people_group, min = 1, max = 365), digits = 0 )
+}
+generate_birthdays(3)
+generate_birthdays(10)
+```
+
+Note, how we are assuming that birthdays are randomly and uniformly distributed across the population. In reality, more people are born in September and October.
+
+Let's create a function that will tell us if at least two people share a birthday: Since there are 365 per year
+we can just numbers from 1 to 365.
+
+```{r}
+
+bday_group_3_people <- c(10, 46, 209) # noone share birthday, should be false
+bday_group_5_people <- c(10, 46, 209, 46, 265) # two people share birthdays, should be true
+bday_group_7_people<- c(10, 46, 209, 46, 265, 46, 2) # Three people share birthday, should be true
+
+check_share_birthday <- function(data, min_num_shared_birthdays = 2) {
+  max(table(data)) >= min_num_shared_birthdays
+}
+# table is a nice function that does the count for us:
+table(bday_group_5_people)
+
+# Checking that the function works as expected
+check_share_birthday(bday_group_3_people)
+check_share_birthday(bday_group_5_people)
+check_share_birthday(bday_group_7_people)
+```
+
+This is where the fun happens:
+Now we just iterate over the groups. We create a vector containing the birthdays of those people and check if those people share a birthday, if they do, we keep track of it. Then we repeat this process _y_ times. Once we have completed _y_ tests for a single group, we move to the next one and repeat the process.
+```{r}
+set.seed(123)
+results <- data.frame()
+
+for(individual_group in 2:number_people) { 
+  shared_birthdays_counter <- 0
+
+  for (test in seq_len(number_tests)) { 
+    random_birthdays_vector <- generate_birthdays(individual_group) 
+    
+    if (check_share_birthday(random_birthdays_vector)) {
+      shared_birthdays_counter <- shared_birthdays_counter + 1
+    }
+
+  }
+  probability_duplicates <- 100 * (shared_birthdays_counter/number_tests)
+
+  results <- rbind(results, c(individual_group, probability_duplicates))
+}
+colnames(results) <- c("people_in_group", "probability_shared_birthday")
+results <- round(results, 1)
+head(results)
+```
+
+## Results
+
+Let's check how many people are needed in a group to get a probability of ~50%.
+
+```{r}
+results |> 
+  dplyr::filter(
+    probability_shared_birthday > 45,
+    probability_shared_birthday < 55
+  )
+```
+
+According to our simulation, **only 23 people are needed to have a probability of 50% to share a birthday!**
+
+I'm also curious about what is the minimum amount of people where having a shared birthday is almost certain:
+
+```{r}
+groups_prob_99_perc <- results |> 
+  dplyr::filter(
+    probability_shared_birthday > 99
+  )
+head(groups_prob_99_perc)
+```
+
+It seems that with 55 people, the chances to have at least one shared birthday are 99%!
+
+## Visualising the results
+
+Let's plot those results and see what we can observe.
+
+```{r, message=FALSE}
+#| code-fold: true
+library(highcharter)
+
+hchart(
+    results,
+    type = "line",
+    hcaes(x = people_in_group, y = probability_shared_birthday)
+  ) |>
+  hc_title(text = "<b>Probability of at least two people having the same birthday</b>") |>
+  hc_subtitle(text = "<i>A total of 1000 simulations per group were computed</i>") |>
+  hc_credits(enabled = TRUE, text = "https://svalvaro.github.io/") |>
+  hc_xAxis(title = list(text = "Number of people in the group")) |> 
+  hc_yAxis(title = list(text = "Probability (%)")) |> 
+  hc_yAxis(max = 100) |> 
+  hc_tooltip(
+    pointFormat = "
+    <b># People in the group: </b>{point.x:,.f}<br>
+    <b>Probability: </b>{point.y:,.1f}%<br>"
+  ) |>
+  hc_add_theme(hc_theme_economist()) 
+
+```

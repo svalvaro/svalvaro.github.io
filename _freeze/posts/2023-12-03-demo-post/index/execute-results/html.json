@@ -1,0 +1,14 @@
+{
+  "hash": "344de3b8171150794e18ec02d32c2d60",
+  "result": {
+    "markdown": "---\ntitle: \"blog post title\"\ndescription: \"blog post description (appears underneath the title in smaller text) which is included on the listing page\"\nauthor:\n  - name: Alvaro\n    url: https://svalvaro.github.io/\n    affiliation: Appsilon\ndate: 02-11-2023\ncategories: [Quarto, R, Shiny] # self-defined categories\ncitation: \n  url: https://svalvaro.github.io/posts/2023-12-03-demo-post/ \nimage: preview-image.png\ndraft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nprint(1 +1)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 2\n```\n:::\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

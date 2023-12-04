@@ -1,0 +1,26 @@
+---
+title: ""
+image: images/me_drawing.png
+toc: false
+about: 
+  template: jolla
+  image-shape: round
+  image-width: 14em
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/svalvaro/
+    - icon: github
+      text: GitHub
+      href: https://github.com/svalvaro
+---
+
+<!-- ::: {.small-text} -->
+
+Hola! I'm glad that you have found this place, I hope you can learn something new while browsing around here :).
+
+I use technology to solve problems, and I love doing that. I started as a bioinformatician, answering biological questions about data. Currently, I'm working as a R developer, I create digital solutions (Web applications, R packages, Report generation, and much more!). A
+
+You might find me hiking outdoors or playing chess! <!-- ::: -->
+
+<!-- ### hi there!     -->
