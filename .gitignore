@@ -1,7 +1,12 @@
 .Rproj.user
-.Rhistory
-.Rdata
-.httr-oauth
 .DS_Store
-
+.Rhistoryt
+.Rhistory
 /.quarto/
+/_*.local
+/.venv/
+/.condaenv/
+*_cache/
+/env/
+/_site/
+/.venv/
