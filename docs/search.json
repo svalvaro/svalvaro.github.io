@@ -67,7 +67,7 @@
     "href": "posts.html",
     "title": "Posts",
     "section": "",
-    "text": "Simulating the Birthday Paradox\n\n\n\nR\n\n\necharts\n\n\nsimulation\n\n\n\nI couldn’t believe the birthday paradox, so I tested it!\n\n\n\nÁlvaro Sánchez\n\n\nMar 10, 2023\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Build it yourself: Quill\n\n\n\nR\n\n\nshinytestthat2\n\n\nshiny\n\n\nR packages\n\n\nquill\n\n\n\nHow I built Quill, an R package that brings rich text editing to Shiny and R Markdown using QuillJS\n\n\n\nÁlvaro Sánchez\n\n\nNov 19, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimulating the Birthday Paradox\n\n\n\nR\n\n\necharts\n\n\nsimulation\n\n\n\nI couldn’t believe the birthday paradox, so I tested it!\n\n\n\nÁlvaro Sánchez\n\n\nMar 10, 2023\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "projects.html",
@@ -96,5 +96,75 @@
     "title": "MQmetrics",
     "section": "",
     "text": "This is an R packaged aimed to check the quality control in a typical protemics experiment. It was released with Bioconductor. Here is the repo."
+  },
+  {
+    "objectID": "posts/19-11-2024-quill/index.html",
+    "href": "posts/19-11-2024-quill/index.html",
+    "title": "Build it yourself: Quill",
+    "section": "",
+    "text": "I worked once on a legacy code base where there hundreds (or more!) of lines to implement a text editor. This code was an R shiny web application, and I noticed that this tool, a library that quickly loads a text editor didn’t exist in the R world.\nSo, I decided to build one myself."
+  },
+  {
+    "objectID": "posts/19-11-2024-quill/index.html#plan",
+    "href": "posts/19-11-2024-quill/index.html#plan",
+    "title": "Creating Quill: Bringing Rich Text Editing to R",
+    "section": "Plan",
+    "text": "Plan\nThe idea is simple. I’ll create multiple groups from two to n number of people. For each group, I’ll count how many times at least two people share a birthday. Then repeat this process multiple times (y), to obtain reproducible results\nSo if n = 4, means a group of four people, and y = 5, means to check the probabilities three times. The simulation will be like this:\n\nChoose two random people (n - 2), do they share a birthday? –&gt; Count the result. Repeat y times. Calculate the probability for a group of two people.\nChoose three random people (n - 1), do at least two of them share a birthday? –&gt; Count the result. Repeat y times. Calculate the probability for a group of three people.\nChoose four random people (n), do at least two of them share a birthday?? –&gt; Count the result. Repeat y times. Calculate the probability for a group of four people.\n\nFor each group, calculating the probability is simple. For example, if in the group of four people, only there was a simulation were people shared birthdays but no shared birthdays in the other four, the probability would be 1/5 = 20%."
+  },
+  {
+    "objectID": "posts/19-11-2024-quill/index.html#simulation",
+    "href": "posts/19-11-2024-quill/index.html#simulation",
+    "title": "Creating Quill: Bringing Rich Text Editing to R",
+    "section": "Simulation",
+    "text": "Simulation\nLet’s select bigger groups of up to 80 people, and let’s check them 1000 times each.\n\nnumber_people &lt;- 80\nnumber_tests &lt;- 1000\n\nWe need a function that creates random birthdays for a group of n people.\n\ngenerate_birthdays &lt;- function(n_people_group) {\n  round(runif(n = n_people_group, min = 1, max = 365), digits = 0 )\n}\ngenerate_birthdays(3)\n\n[1] 332 231  19\n\ngenerate_birthdays(10)\n\n [1] 316 176  66 217 314  93 193  95 112 302\n\n\nNote, how we are assuming that birthdays are randomly and uniformly distributed across the population. In reality, more people are born in September and October.\nLet’s create a function that will tell us if at least two people share a birthday: Since there are 365 per year we can just numbers from 1 to 365.\n\nbday_group_3_people &lt;- c(10, 46, 209) # noone share birthday, should be false\nbday_group_5_people &lt;- c(10, 46, 209, 46, 265) # two people share birthdays, should be true\nbday_group_7_people&lt;- c(10, 46, 209, 46, 265, 46, 2) # Three people share birthday, should be true\n\ncheck_share_birthday &lt;- function(data, min_num_shared_birthdays = 2) {\n  max(table(data)) &gt;= min_num_shared_birthdays\n}\n# table is a nice function that does the count for us:\ntable(bday_group_5_people)\n\nbday_group_5_people\n 10  46 209 265 \n  1   2   1   1 \n\n# Checking that the function works as expected\ncheck_share_birthday(bday_group_3_people)\n\n[1] FALSE\n\ncheck_share_birthday(bday_group_5_people)\n\n[1] TRUE\n\ncheck_share_birthday(bday_group_7_people)\n\n[1] TRUE\n\n\nThis is where the fun happens: Now we just iterate over the groups. We create a vector containing the birthdays of those people and check if those people share a birthday, if they do, we keep track of it. Then we repeat this process y times. Once we have completed y tests for a single group, we move to the next one and repeat the process.\n\nset.seed(123)\nresults &lt;- data.frame()\n\nfor(individual_group in 2:number_people) { \n  shared_birthdays_counter &lt;- 0\n\n  for (test in seq_len(number_tests)) { \n    random_birthdays_vector &lt;- generate_birthdays(individual_group) \n    \n    if (check_share_birthday(random_birthdays_vector)) {\n      shared_birthdays_counter &lt;- shared_birthdays_counter + 1\n    }\n\n  }\n  probability_duplicates &lt;- 100 * (shared_birthdays_counter/number_tests)\n\n  results &lt;- rbind(results, c(individual_group, probability_duplicates))\n}\ncolnames(results) &lt;- c(\"people_in_group\", \"probability_shared_birthday\")\nresults &lt;- round(results, 1)\nhead(results)\n\n  people_in_group probability_shared_birthday\n1               2                         0.1\n2               3                         0.7\n3               4                         1.2\n4               5                         2.7\n5               6                         4.2\n6               7                         5.6"
+  },
+  {
+    "objectID": "posts/19-11-2024-quill/index.html#results",
+    "href": "posts/19-11-2024-quill/index.html#results",
+    "title": "Creating Quill: Bringing Rich Text Editing to R",
+    "section": "Results",
+    "text": "Results\nLet’s check how many people are needed in a group to get a probability of ~50%.\n\nresults |&gt; \n  dplyr::filter(\n    probability_shared_birthday &gt; 45,\n    probability_shared_birthday &lt; 55\n  )\n\n  people_in_group probability_shared_birthday\n1              21                        45.3\n2              22                        45.8\n3              23                        51.9\n4              24                        53.0\n\n\nAccording to our simulation, only 23 people are needed to have a probability of 50% to share a birthday!\nI’m also curious about what is the minimum amount of people where having a shared birthday is almost certain:\n\ngroups_prob_99_perc &lt;- results |&gt; \n  dplyr::filter(\n    probability_shared_birthday &gt; 99\n  )\nhead(groups_prob_99_perc)\n\n  people_in_group probability_shared_birthday\n1              55                        99.1\n2              57                        99.4\n3              59                        99.3\n4              60                        99.2\n5              61                        99.6\n6              62                        99.7\n\n\nIt seems that with 55 people, the chances to have at least one shared birthday are 99%!"
+  },
+  {
+    "objectID": "posts/19-11-2024-quill/index.html#visualising-the-results",
+    "href": "posts/19-11-2024-quill/index.html#visualising-the-results",
+    "title": "Creating Quill: Bringing Rich Text Editing to R",
+    "section": "Visualising the results",
+    "text": "Visualising the results\nLet’s plot those results and see what we can observe.\n\n\nCode\nlibrary(highcharter)\n\nhchart(\n    results,\n    type = \"line\",\n    hcaes(x = people_in_group, y = probability_shared_birthday)\n  ) |&gt;\n  hc_title(text = \"&lt;b&gt;Probability of at least two people having the same birthday&lt;/b&gt;\") |&gt;\n  hc_subtitle(text = \"&lt;i&gt;A total of 1000 simulations per group were computed&lt;/i&gt;\") |&gt;\n  hc_credits(enabled = TRUE, text = \"https://svalvaro.github.io/\") |&gt;\n  hc_xAxis(title = list(text = \"Number of people in the group\")) |&gt; \n  hc_yAxis(title = list(text = \"Probability (%)\")) |&gt; \n  hc_yAxis(max = 100) |&gt; \n  hc_tooltip(\n    pointFormat = \"\n    &lt;b&gt;# People in the group: &lt;/b&gt;{point.x:,.f}&lt;br&gt;\n    &lt;b&gt;Probability: &lt;/b&gt;{point.y:,.1f}%&lt;br&gt;\"\n  ) |&gt;\n  hc_add_theme(hc_theme_economist())"
+  },
+  {
+    "objectID": "posts/19-11-2024-quill/index.html#why-quill",
+    "href": "posts/19-11-2024-quill/index.html#why-quill",
+    "title": "Build it yourself: Quill",
+    "section": "Why Quill?",
+    "text": "Why Quill?\nThe idea for Quill came out of necessity. There wasn’t a simple tool in R that allowed developers to embed a rich text editor into their apps. Sure, there are solutions for forms, plots, and dashboards, but nothing specifically for polished text editing.\nThat’s when I discovered QuillJS, a lightweight JavaScript library for building text editors. It was exactly what I was looking for: clean, customizable, and perfect for embedding. But there was a problem—it wasn’t accessible from R. I’d have to bridge the gap. With the use of the R package htmlwidgets this was possible."
+  },
+  {
+    "objectID": "posts/19-11-2024-quill/index.html#building-quill-the-journey",
+    "href": "posts/19-11-2024-quill/index.html#building-quill-the-journey",
+    "title": "Quill: Bringing Rich Text Editing to R",
+    "section": "Building Quill: The Journey",
+    "text": "Building Quill: The Journey\nCreating an R package around QuillJS meant learning a bit about how R interacts with JavaScript. Thankfully, the htmlwidgets package made the process smoother. Here’s how I went about it:\nStarting with the Basics I started by scaffolding a new widget with htmlwidgets::scaffoldWidget(“quill”). This command sets up the foundation for integrating JavaScript libraries with R.\nEmbedding the QuillJS Library Next, I included QuillJS’s JavaScript and CSS files in the package. These files allow R to “talk” to the Quill editor and render it properly in a browser window (like in Shiny).\nWriting the JavaScript Code The heart of the package is the JavaScript file (quill.js). Here, I wrote the logic to initialize the editor, configure the toolbar, and handle user input. This step involved digging into QuillJS’s documentation to understand its API and experimenting to see what worked.\nCreating the R Function I wanted the package to be simple to use. With the quill() function, users can add a rich text editor to their apps with just one line of code. I also included options for customizing the editor—like enabling headers, lists, or links—so developers could tailor it to their needs."
+  },
+  {
+    "objectID": "posts/19-11-2024-quill/index.html#testing-in-shiny",
+    "href": "posts/19-11-2024-quill/index.html#testing-in-shiny",
+    "title": "Quill: Bringing Rich Text Editing to R",
+    "section": "Testing in Shiny",
+    "text": "Testing in Shiny\nOnce the basics were working, I tested the widget in a Shiny app. This was the fun part: I used the powerful end to end tests with shinytest2.\nWhat Quill Can Do The Quill package makes it easy to:\nAdd a modern text editor to Shiny apps or R Markdown documents. Customize the toolbar to include options like bold, italics, headers, or links. Retrieve and process user input in real-time. Lessons Learned Creating Quill wasn’t as straightforward as I first imagined. Debugging the interaction between JavaScript and R took patience. There were moments when I questioned if I’d bitten off more than I could chew. But pushing through those challenges taught me a lot—not just about building htmlwidgets but also about how powerful the R ecosystem is when combined with web technologies.\nWhy This Matters Quill fills a small but important gap in the R world. It’s not just about creating a text editor—it’s about empowering R developers to build richer, more interactive tools.\nFinal Thoughts If you’ve ever thought, “Why isn’t there a package for this?” you’re not alone. The beauty of open-source is that if something doesn’t exist, you can build it. That’s what I did with Quill, and I hope it inspires others to do the same.\nTry Quill out on GitHub and let me know how it works for you. I’m always open to feedback and new ideas!"
+  },
+  {
+    "objectID": "posts/19-11-2024-quill/index.html#how-to-use-quill",
+    "href": "posts/19-11-2024-quill/index.html#how-to-use-quill",
+    "title": "Build it yourself: Quill",
+    "section": "How to use quill?",
+    "text": "How to use quill?\nLike any other htmlwidget, there is an UI function: quillOutput(), and a server function: renderQuill(). You can select the options of the toolbar with toolbar_options.\n\n## basic example of functioning in Shiny\nlibrary(quill)\n\nui &lt;- fluidPage(\n  ... \n  quillOutput(\"text_editor\")\n  ...\n)\n\nserver &lt;- function(input, output, ...) {\n  ...\n  output$text_editor &lt;- renderQuill({\n    quill(toolbar = toolbar_options(code = TRUE)) \n  })\n\n  # You can listen what the user is writing in HTML, JSON, and plain text\n  observeEvent(input$text_editor_content, {\n    get_editor_content(input$text_editor_content, format = \"HTML\")\n  }\n  ...\n}\n\nYou can see an example Shiny app here."
+  },
+  {
+    "objectID": "posts/19-11-2024-quill/index.html#what-quill-can-do",
+    "href": "posts/19-11-2024-quill/index.html#what-quill-can-do",
+    "title": "Build it yourself: Quill",
+    "section": "What Quill Can Do",
+    "text": "What Quill Can Do\nThe Quill package makes it easy to:\n\nAdd a modern text editor to Shiny apps or R Markdown documents.\nCustomize the toolbar to include options like bold, italics, headers, or links.\nRetrieve and process user input in real-time. Lessons Learned\n\nIf you’ve ever thought, “Why isn’t there a package for this?” you’re not alone. The beauty of open-source is that if something doesn’t exist, you can build it. That’s what I did with Quill, and I hope it inspires others to do the same.\nTry Quill out on GitHub and let me know how it works for you. I’m always open to feedback and new ideas!"
   }
 ]

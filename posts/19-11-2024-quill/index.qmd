@@ -1,0 +1,68 @@
+---
+title: "Build it yourself: Quill"
+description: "How I built Quill, an R package that brings rich text editing to Shiny and R Markdown using QuillJS"
+author:
+  - name: Álvaro Sánchez
+    url: https://svalvaro.github.io/
+date: 11-19-2024
+categories: [R, shinytestthat2, shiny, R packages, quill]
+citation: 
+  url: https://svalvaro.github.io/posts/19-10-2024/ 
+image: quill.png
+draft: false 
+freeze: true
+---
+
+I worked once on a legacy code base where there hundreds (or more!) of lines to implement a text editor.
+This code was an R shiny web application, and I noticed that this tool, a library that quickly loads
+a text editor didn't exist in the R world.
+
+So, I decided to build one myself. 
+
+## Why Quill?
+The idea for Quill came out of necessity. There wasn’t a simple tool in R that allowed developers to embed a rich text editor into their apps. Sure, there are solutions for forms, plots, and dashboards, but nothing specifically for polished text editing.
+
+That’s when I discovered [QuillJS](https://quilljs.com/), a lightweight JavaScript library for building text editors. It was exactly what I was looking for: clean, customizable, and perfect for embedding. But there was a problem—it wasn’t accessible from R. I’d have to bridge the gap. With the use of the
+R package `htmlwidgets` this was possible.
+
+## How to use quill?
+
+Like any other htmlwidget, there is an UI function: `quillOutput()`, and a server function: `renderQuill()`. You can select the options of the toolbar with `toolbar_options`.
+
+```{r, eval=FALSE}
+## basic example of functioning in Shiny
+library(quill)
+
+ui <- fluidPage(
+  ... 
+  quillOutput("text_editor")
+  ...
+)
+
+server <- function(input, output, ...) {
+  ...
+  output$text_editor <- renderQuill({
+    quill(toolbar = toolbar_options(code = TRUE)) 
+  })
+
+  # You can listen what the user is writing in HTML, JSON, and plain text
+  observeEvent(input$text_editor_content, {
+    get_editor_content(input$text_editor_content, format = "HTML")
+  }
+  ...
+}
+```
+
+You can see an example Shiny app [here](https://github.com/svalvaro/quill/blob/main/inst/examples/shiny/app.R).
+
+## What Quill Can Do
+The Quill package makes it easy to:
+
+- Add a modern text editor to Shiny apps or R Markdown documents.
+- Customize the toolbar to include options like bold, italics, headers, or links.
+- Retrieve and process user input in real-time.
+Lessons Learned
+
+If you’ve ever thought, “Why isn’t there a package for this?” you’re not alone. The beauty of open-source is that if something doesn’t exist, you can build it. That’s what I did with Quill, and I hope it inspires others to do the same.
+
+Try Quill out on [GitHub](https://github.com/svalvaro/quill) and let me know how it works for you. I’m always open to feedback and new ideas!
