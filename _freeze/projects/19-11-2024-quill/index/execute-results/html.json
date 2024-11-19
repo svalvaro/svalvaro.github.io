@@ -1,0 +1,19 @@
+{
+  "hash": "372eafc017abdae415006431ded31849",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"quill\"\ndescription: \"A text editor for R\"\nauthor:\n  - name: Álvaro Sánchez\n    url: https://svalvaro.github.io/\ndate: 19-11-2024\ncategories: [R, quill, shiny]\nimage: quill.png\ndraft: false \nfreeze: true\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(quill)\nquill(toolbar_options(image = FALSE, video = FALSE))\n```\n\n::: {.cell-output-display}\n\n```{=html}\n<div class=\"quillWidget html-widget html-fill-item\" id=\"htmlwidget-c8d81381f31490ff79c5\" style=\"width:100%;height:464px;\"></div>\n<script type=\"application/json\" data-for=\"htmlwidget-c8d81381f31490ff79c5\">{\"x\":{\"toolbar_options\":{\"align\":[{\"align\":\"center\"},{\"align\":\"right\"}],\"background\":[{\"background\":[]}],\"color\":[{\"color\":[]}],\"direction\":[{\"direction\":\"rtl\"}],\"header\":[{\"header\":[\"1\",\"2\",false,\"3\"]}],\"indent\":[{\"indent\":\"-1\"},{\"indent\":\"+1\"}],\"list\":[{\"list\":\"ordered\"},{\"list\":\"bullet\"},{\"list\":\"check\"}],\"size\":[{\"size\":[\"small\",true,\"large\",\"huge\"]}],\"script\":[{\"script\":\"sub\"},{\"script\":\"super\"}],\"binary_options\":[\"blockquote\",\"bold\",\"clean\",\"formula\",\"code\",\"italic\",\"link\",\"strike\",\"underline\",\"code-block\"]},\"theme\":\"snow\",\"placeholder\":\"Placeholder message\"},\"evals\":[],\"jsHooks\":[]}</script>\n```\n\n:::\n:::\n\n\nThe Quill package makes it easy to:\n\n- Add a modern text editor to Shiny apps or R Markdown documents.\n- Customize the toolbar to include options like bold, italics, headers, or links.\n- Retrieve and process user input in real-time.\nLessons Learned\n\n\nCode in [GitHub](https://github.com/svalvaro/quill){target=\"_blank\"}",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-in-header": [
+        "<script src=\"../../site_libs/htmlwidgets-1.6.3/htmlwidgets.js\"></script>\n<link href=\"../../site_libs/quill-1.0.0/atom-one-dark.min.css\" rel=\"stylesheet\" />\n<link href=\"../../site_libs/quill-1.0.0/katex.min.css\" rel=\"stylesheet\" />\n<link href=\"../../site_libs/quill-1.0.0/quill.bubble.css\" rel=\"stylesheet\" />\n<link href=\"../../site_libs/quill-1.0.0/quill.snow.css\" rel=\"stylesheet\" />\n<script src=\"../../site_libs/quill-1.0.0/highlight.min.js\"></script>\n<script src=\"../../site_libs/quill-1.0.0/katex.min.js\"></script>\n<script src=\"../../site_libs/quill-1.0.0/quill.min.js\"></script>\n<script src=\"../../site_libs/quillWidget-binding-0.1.0/quillWidget.js\"></script>\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

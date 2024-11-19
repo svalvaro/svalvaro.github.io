@@ -1,0 +1,26 @@
+---
+title: "Quill"
+description: "A text editor for R"
+author:
+  - name: Álvaro Sánchez
+    url: https://svalvaro.github.io/
+date: 19-11-2024
+categories: [R, quill, shiny]
+image: quill.png
+draft: false 
+freeze: true
+---
+
+```{r}
+library(quill)
+quill(toolbar_options(image = FALSE, video = FALSE))
+```
+The Quill package makes it easy to:
+
+- Add a modern text editor to Shiny apps or R Markdown documents.
+- Customize the toolbar to include options like bold, italics, headers, or links.
+- Retrieve and process user input in real-time.
+Lessons Learned
+
+
+Code in [GitHub](https://github.com/svalvaro/quill){target="_blank"}

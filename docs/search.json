@@ -74,7 +74,7 @@
     "href": "projects.html",
     "title": "Projects",
     "section": "",
-    "text": "During the last years, the vast majority of my work is stored in private repositories and even private GitHub/GitLab accounts. So this part will be quite empty for now :(\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndrawCell\n\n\n\nR\n\n\nlife sciences\n\n\nshiny\n\n\n\ncell pictures in R\n\n\n\nÁlvaro Sánchez\n\n\nOct 10, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProteoViewer\n\n\n\nR\n\n\nlife sciences\n\n\nshiny\n\n\nproteomics\n\n\n\nAnalyse peptide intensities from proteomics LC-MS/MS experiment.\n\n\n\nÁlvaro Sánchez\n\n\nFeb 3, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMQmetrics\n\n\n\nR\n\n\nlife sciences\n\n\nproteomics\n\n\n\nReporting the quality control of proteomics experiments\n\n\n\nÁlvaro Sánchez\n\n\nJan 1, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "During the last years, the vast majority of my work is stored in private repositories and even private GitHub/GitLab accounts. So this part will be quite empty for now :(\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nquill\n\n\n\nR\n\n\nquill\n\n\nshiny\n\n\n\nA text editor for R\n\n\n\nÁlvaro Sánchez\n\n\nJul 11, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndrawCell\n\n\n\nR\n\n\nlife sciences\n\n\nshiny\n\n\n\ncell pictures in R\n\n\n\nÁlvaro Sánchez\n\n\nOct 10, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProteoViewer\n\n\n\nR\n\n\nlife sciences\n\n\nshiny\n\n\nproteomics\n\n\n\nAnalyse peptide intensities from proteomics LC-MS/MS experiment.\n\n\n\nÁlvaro Sánchez\n\n\nFeb 3, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMQmetrics\n\n\n\nR\n\n\nlife sciences\n\n\nproteomics\n\n\n\nReporting the quality control of proteomics experiments\n\n\n\nÁlvaro Sánchez\n\n\nJan 1, 2022\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "projects/17-11-2022-drawCell/index.html",
@@ -173,5 +173,12 @@
     "title": "Build it yourself: Quill",
     "section": "Example",
     "text": "Example\n\nlibrary(quill)\nquill(toolbar_options(image = FALSE, video = FALSE))"
+  },
+  {
+    "objectID": "projects/19-11-2024-quill/index.html",
+    "href": "projects/19-11-2024-quill/index.html",
+    "title": "quill",
+    "section": "",
+    "text": "library(quill)\nquill(toolbar_options(image = FALSE, video = FALSE))\n\n\n\n\n\nThe Quill package makes it easy to:\n\nAdd a modern text editor to Shiny apps or R Markdown documents.\nCustomize the toolbar to include options like bold, italics, headers, or links.\nRetrieve and process user input in real-time. Lessons Learned\n\nCode in GitHub"
   }
 ]
