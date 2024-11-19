@@ -67,14 +67,14 @@
     "href": "posts.html",
     "title": "Posts",
     "section": "",
-    "text": "Build it yourself: Quill\n\n\n\nR\n\n\nshinytestthat2\n\n\nshiny\n\n\nR packages\n\n\nquill\n\n\n\nHow I built Quill, an R package that brings rich text editing to Shiny and R Markdown using QuillJS\n\n\n\nÁlvaro Sánchez\n\n\nNov 19, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimulating the Birthday Paradox\n\n\n\nR\n\n\necharts\n\n\nsimulation\n\n\n\nI couldn’t believe the birthday paradox, so I tested it!\n\n\n\nÁlvaro Sánchez\n\n\nMar 10, 2023\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Build it yourself: Quill\n\n\n\nR\n\n\nshiny\n\n\nR packages\n\n\nquill\n\n\n\nHow I built Quill, an R package that brings rich text editing to Shiny and R Markdown using QuillJS\n\n\n\nÁlvaro Sánchez\n\n\nNov 19, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimulating the Birthday Paradox\n\n\n\nR\n\n\necharts\n\n\nsimulation\n\n\n\nI couldn’t believe the birthday paradox, so I tested it!\n\n\n\nÁlvaro Sánchez\n\n\nMar 10, 2023\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "projects.html",
     "href": "projects.html",
     "title": "Projects",
     "section": "",
-    "text": "During the last years, the vast majority of my work is stored in private repositories and even private GitHub/GitLab accounts. So this part will be quite empty for now :(\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nquill\n\n\n\nR\n\n\nquill\n\n\nshiny\n\n\n\nA text editor for R\n\n\n\nÁlvaro Sánchez\n\n\nJul 11, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndrawCell\n\n\n\nR\n\n\nlife sciences\n\n\nshiny\n\n\n\ncell pictures in R\n\n\n\nÁlvaro Sánchez\n\n\nOct 10, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProteoViewer\n\n\n\nR\n\n\nlife sciences\n\n\nshiny\n\n\nproteomics\n\n\n\nAnalyse peptide intensities from proteomics LC-MS/MS experiment.\n\n\n\nÁlvaro Sánchez\n\n\nFeb 3, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMQmetrics\n\n\n\nR\n\n\nlife sciences\n\n\nproteomics\n\n\n\nReporting the quality control of proteomics experiments\n\n\n\nÁlvaro Sánchez\n\n\nJan 1, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "During the last years, the vast majority of my work is stored in private repositories and even private GitHub/GitLab accounts. So this part will be quite empty for now :(\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuill\n\n\n\nR\n\n\nquill\n\n\nshiny\n\n\n\nA text editor for R\n\n\n\nÁlvaro Sánchez\n\n\nJul 11, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndrawCell\n\n\n\nR\n\n\nlife sciences\n\n\nshiny\n\n\n\ncell pictures in R\n\n\n\nÁlvaro Sánchez\n\n\nOct 10, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProteoViewer\n\n\n\nR\n\n\nlife sciences\n\n\nshiny\n\n\nproteomics\n\n\n\nAnalyse peptide intensities from proteomics LC-MS/MS experiment.\n\n\n\nÁlvaro Sánchez\n\n\nFeb 3, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMQmetrics\n\n\n\nR\n\n\nlife sciences\n\n\nproteomics\n\n\n\nReporting the quality control of proteomics experiments\n\n\n\nÁlvaro Sánchez\n\n\nJan 1, 2022\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "projects/17-11-2022-drawCell/index.html",

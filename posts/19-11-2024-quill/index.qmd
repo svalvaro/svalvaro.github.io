@@ -5,7 +5,7 @@ author:
   - name: Álvaro Sánchez
     url: https://svalvaro.github.io/
 date: 11-19-2024
-categories: [R, shinytestthat2, shiny, R packages, quill]
+categories: [R, shiny, R packages, quill]
 citation: 
   url: https://svalvaro.github.io/posts/19-10-2024/ 
 image: quill.png
