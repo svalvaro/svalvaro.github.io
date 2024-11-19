@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.3.1",
+    "Version": "4.4.2",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -563,6 +563,26 @@
         "zoo"
       ],
       "Hash": "d64914f80e2e0bec895a2c5740b21040"
+    },
+    "quill": {
+      "Package": "quill",
+      "Version": "0.1.0",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "quill",
+      "RemoteUsername": "svalvaro",
+      "RemotePkgRef": "svalvaro/quill",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "cd51326eaad2b332f361bab4c90e7c0b673fe7e9",
+      "Requirements": [
+        "htmlwidgets",
+        "jsonlite",
+        "purrr",
+        "rlang",
+        "tibble"
+      ],
+      "Hash": "6f85c8e46bd551c313d58e0e67fc8e55"
     },
     "rappdirs": {
       "Package": "rappdirs",

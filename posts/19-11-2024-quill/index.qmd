@@ -19,6 +19,13 @@ a text editor didn't exist in the R world.
 
 So, I decided to build one myself. 
 
+## Example
+
+```{r}
+library(quill)
+quill(toolbar_options(image = FALSE, video = FALSE))
+```
+
 ## Why Quill?
 The idea for Quill came out of necessity. There wasn’t a simple tool in R that allowed developers to embed a rich text editor into their apps. Sure, there are solutions for forms, plots, and dashboards, but nothing specifically for polished text editing.
 
@@ -64,5 +71,6 @@ The Quill package makes it easy to:
 Lessons Learned
 
 If you’ve ever thought, “Why isn’t there a package for this?” you’re not alone. The beauty of open-source is that if something doesn’t exist, you can build it. That’s what I did with Quill, and I hope it inspires others to do the same.
+
 
 Try Quill out on [GitHub](https://github.com/svalvaro/quill) and let me know how it works for you. I’m always open to feedback and new ideas!

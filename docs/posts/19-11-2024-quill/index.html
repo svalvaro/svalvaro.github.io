@@ -104,6 +104,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="../../site_libs/htmlwidgets-1.6.3/htmlwidgets.js"></script>
+<link href="../../site_libs/quill-1.0.0/atom-one-dark.min.css" rel="stylesheet">
+<link href="../../site_libs/quill-1.0.0/katex.min.css" rel="stylesheet">
+<link href="../../site_libs/quill-1.0.0/quill.bubble.css" rel="stylesheet">
+<link href="../../site_libs/quill-1.0.0/quill.snow.css" rel="stylesheet">
+<script src="../../site_libs/quill-1.0.0/highlight.min.js"></script>
+<script src="../../site_libs/quill-1.0.0/katex.min.js"></script>
+<script src="../../site_libs/quill-1.0.0/quill.min.js"></script>
+<script src="../../site_libs/quillWidget-binding-0.1.0/quillWidget.js"></script>
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -205,7 +214,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#why-quill" id="toc-why-quill" class="nav-link active" data-scroll-target="#why-quill">Why Quill?</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link active" data-scroll-target="#example">Example</a></li>
+  <li><a href="#why-quill" id="toc-why-quill" class="nav-link" data-scroll-target="#why-quill">Why Quill?</a></li>
   <li><a href="#how-to-use-quill" id="toc-how-to-use-quill" class="nav-link" data-scroll-target="#how-to-use-quill">How to use quill?</a></li>
   <li><a href="#what-quill-can-do" id="toc-what-quill-can-do" class="nav-link" data-scroll-target="#what-quill-can-do">What Quill Can Do</a></li>
   </ul>
@@ -220,6 +230,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>I worked once on a legacy code base where there hundreds (or more!) of lines to implement a text editor. This code was an R shiny web application, and I noticed that this tool, a library that quickly loads a text editor didn’t exist in the R world.</p>
 <p>So, I decided to build one myself.</p>
+<section id="example" class="level2">
+<h2 class="anchored" data-anchor-id="example">Example</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quill)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quill</span>(<span class="fu">toolbar_options</span>(<span class="at">image =</span> <span class="cn">FALSE</span>, <span class="at">video =</span> <span class="cn">FALSE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quillWidget html-widget html-fill-item" id="htmlwidget-08c97020144c83fffb2f" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-08c97020144c83fffb2f">{"x":{"toolbar_options":{"align":[{"align":"center"},{"align":"right"}],"background":[{"background":[]}],"color":[{"color":[]}],"direction":[{"direction":"rtl"}],"header":[{"header":["1","2",false,"3"]}],"indent":[{"indent":"-1"},{"indent":"+1"}],"list":[{"list":"ordered"},{"list":"bullet"},{"list":"check"}],"size":[{"size":["small",true,"large","huge"]}],"script":[{"script":"sub"},{"script":"super"}],"binary_options":["blockquote","bold","clean","formula","code","italic","link","strike","underline","code-block"]},"theme":"snow","placeholder":"Placeholder message"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
 <section id="why-quill" class="level2">
 <h2 class="anchored" data-anchor-id="why-quill">Why Quill?</h2>
 <p>The idea for Quill came out of necessity. There wasn’t a simple tool in R that allowed developers to embed a rich text editor into their apps. Sure, there are solutions for forms, plots, and dashboards, but nothing specifically for polished text editing.</p>
@@ -229,27 +250,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="how-to-use-quill">How to use quill?</h2>
 <p>Like any other htmlwidget, there is an UI function: <code>quillOutput()</code>, and a server function: <code>renderQuill()</code>. You can select the options of the toolbar with <code>toolbar_options</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## basic example of functioning in Shiny</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quill)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  ... </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quillOutput</span>(<span class="st">"text_editor"</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  ...</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, ...) {</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  ...</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>text_editor <span class="ot">&lt;-</span> <span class="fu">renderQuill</span>({</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">quill</span>(<span class="at">toolbar =</span> <span class="fu">toolbar_options</span>(<span class="at">code =</span> <span class="cn">TRUE</span>)) </span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># You can listen what the user is writing in HTML, JSON, and plain text</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>text_editor_content, {</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_editor_content</span>(input<span class="sc">$</span>text_editor_content, <span class="at">format =</span> <span class="st">"HTML"</span>)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  ...</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## basic example of functioning in Shiny</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quill)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  ... </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quillOutput</span>(<span class="st">"text_editor"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  ...</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, ...) {</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  ...</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>text_editor <span class="ot">&lt;-</span> <span class="fu">renderQuill</span>({</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">quill</span>(<span class="at">toolbar =</span> <span class="fu">toolbar_options</span>(<span class="at">code =</span> <span class="cn">TRUE</span>)) </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># You can listen what the user is writing in HTML, JSON, and plain text</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>text_editor_content, {</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_editor_content</span>(input<span class="sc">$</span>text_editor_content, <span class="at">format =</span> <span class="st">"HTML"</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  ...</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You can see an example Shiny app <a href="https://github.com/svalvaro/quill/blob/main/inst/examples/shiny/app.R">here</a>.</p>
 </section>

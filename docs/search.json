@@ -166,5 +166,12 @@
     "title": "Build it yourself: Quill",
     "section": "What Quill Can Do",
     "text": "What Quill Can Do\nThe Quill package makes it easy to:\n\nAdd a modern text editor to Shiny apps or R Markdown documents.\nCustomize the toolbar to include options like bold, italics, headers, or links.\nRetrieve and process user input in real-time. Lessons Learned\n\nIf you’ve ever thought, “Why isn’t there a package for this?” you’re not alone. The beauty of open-source is that if something doesn’t exist, you can build it. That’s what I did with Quill, and I hope it inspires others to do the same.\nTry Quill out on GitHub and let me know how it works for you. I’m always open to feedback and new ideas!"
+  },
+  {
+    "objectID": "posts/19-11-2024-quill/index.html#example",
+    "href": "posts/19-11-2024-quill/index.html#example",
+    "title": "Build it yourself: Quill",
+    "section": "Example",
+    "text": "Example\n\nlibrary(quill)\nquill(toolbar_options(image = FALSE, video = FALSE))"
   }
 ]
