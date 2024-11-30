@@ -13,7 +13,6 @@ website:
       - projects.qmd
       - posts.qmd
     right:
-      - cv.qmd
       - icon: linkedin
         href: "https://www.linkedin.com/in/svalvaro/"
         target: "_blank"

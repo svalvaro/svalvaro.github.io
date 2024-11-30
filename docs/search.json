@@ -180,5 +180,12 @@
     "title": "quill",
     "section": "",
     "text": "library(quill)\nquill(toolbar_options(image = FALSE, video = FALSE))\n\n\n\n\n\nThe Quill package makes it easy to:\n\nAdd a modern text editor to Shiny apps or R Markdown documents.\nCustomize the toolbar to include options like bold, italics, headers, or links.\nRetrieve and process user input in real-time. Lessons Learned\n\nCode in GitHub"
+  },
+  {
+    "objectID": "posts/30-11-2024-timeseries/index.html",
+    "href": "posts/30-11-2024-timeseries/index.html",
+    "title": "Interactive Time Series Analysis",
+    "section": "",
+    "text": "CitationBibTeX citation:@online{sánchez2024,\n  author = {Sánchez, Álvaro},\n  title = {Interactive {Time} {Series} {Analysis}},\n  date = {2024-11-19},\n  url = {https://svalvaro.github.io/posts/30-11-2024/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nSánchez, Álvaro. 2024. “Interactive Time Series Analysis.”\nNovember 19, 2024. https://svalvaro.github.io/posts/30-11-2024/."
   }
 ]

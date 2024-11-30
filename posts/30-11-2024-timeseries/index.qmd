@@ -1,0 +1,16 @@
+---
+title: "Interactive Time Series Analysis"
+description: "TBD"
+author:
+  - name: Álvaro Sánchez
+    url: https://svalvaro.github.io/
+date: 11-19-2024
+categories: [R, time series]
+citation: 
+  url: https://svalvaro.github.io/posts/30-11-2024/ 
+image: tbd
+draft: true 
+freeze: true
+---
+
+hello
