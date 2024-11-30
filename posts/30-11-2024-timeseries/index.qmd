@@ -6,11 +6,74 @@ author:
     url: https://svalvaro.github.io/
 date: 11-19-2024
 categories: [R, time series]
-citation: 
-  url: https://svalvaro.github.io/posts/30-11-2024/ 
 image: tbd
 draft: true 
 freeze: true
+code-fold: true
 ---
 
-hello
+# Time Series Analysis
+We'll be using a sales dataset from a supermakert chain [source](https://www.kaggle.com/datasets/aungpyaeap/supermarket-sales?resource=download).
+
+```{r,  message=FALSE, expan}
+dataset <- readr::read_csv("data.csv")
+```
+
+```{r}
+head(dataset) |> 
+  kableExtra::kable("html") 
+```
+
+Let's have a look at what the data looks like
+```{r}
+dplyr::glimpse(dataset)
+```
+
+# Daily sales
+```{r, message= FALSE}
+library(dplyr)
+library(lubridate)
+
+summary <- dataset |> 
+  mutate(
+    formatted_date = lubridate::mdy(Date)
+  ) |> 
+  group_by(Branch, formatted_date) |>
+  summarise(
+    sum_sales = sum(Total),
+    .groups = "drop"
+  )
+
+summary |> 
+  head() |> 
+  kableExtra::kable("html") 
+```
+
+We can use ggplot2 for visualising the data
+
+```{r, collapse=TRUE, message=FALSE, warning=FALSE}
+library(ggplot2)
+library(dplyr)
+library(viridis)
+
+temp_summary <- summary |> 
+  mutate(name_branch = Branch)
+
+temp_summary |> 
+  ggplot(aes(x = formatted_date, y = sum_sales)) +
+    geom_line( data=temp_summary %>% dplyr::select(-Branch), aes(group=name_branch), color="grey", size=0.5, alpha=0.5) +
+    geom_line( aes(color = Branch), color="#69b3a2", size=1.2 )+
+    scale_color_viridis(discrete = TRUE) +
+    theme(
+      legend.position="none",
+      plot.title = element_text(size=14),
+      panel.grid = element_blank()
+    ) +
+    ylab("Sales $") +
+    xlab("2019") +
+    # theme_ipsum() +
+    ggtitle("Total Sales per branch") +
+    facet_wrap(~Branch, ncol = 1)
+  
+
+```
