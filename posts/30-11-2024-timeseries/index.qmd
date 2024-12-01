@@ -36,7 +36,6 @@ Let's check what are people buying...
 
 ```{r, message = FALSE, fig.height=8, fig.width=8, warning=FALSE}
 library(ggplot2)
-library(ggstream)
 library(cowplot)
 library(dplyr)
 library(hrbrthemes)
@@ -58,7 +57,6 @@ stream_plot <- function(data, branch) {
   data |> 
   filter(Branch == branch) |> 
   ggplot(aes(x = formatted_date, y = n_products_sold, fill = `Product line`)) +
-  #geom_stream(type="ridge",na.rm = F) +
   geom_area() +
   scale_fill_manual(values= c("#6d2f20", "#df7e66", "#e09351", "#edc775", "#94b594", "#224b5e")) +
   theme_ipsum() +
