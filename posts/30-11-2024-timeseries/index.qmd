@@ -5,8 +5,8 @@ author:
   - name: Álvaro Sánchez
     url: https://svalvaro.github.io/
 date: 11-19-2024
-categories: [R, time series]
-image: tbd
+categories: [R, WORK-IN-PROGRESS, time series]
+image: index.png
 draft: false 
 freeze: true
 code-fold: true
