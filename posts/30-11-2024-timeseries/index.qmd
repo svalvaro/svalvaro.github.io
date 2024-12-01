@@ -7,7 +7,7 @@ author:
 date: 11-19-2024
 categories: [R, time series]
 image: tbd
-draft: true 
+draft: false 
 freeze: true
 code-fold: true
 ---
@@ -55,8 +55,8 @@ stream_plot <- function(data, branch) {
   data |> 
   filter(Branch == branch) |> 
     ggplot(aes(x = formatted_date, y = n_products_sold, fill = `Product line`)) +
-      geom_stream(type="proportion") +
-      scale_fill_manual(values= c("#6d2f20", "#df7e66", "#e09351", "#edc775", "#94b594", "#224b5e")) +
+      geom_stream(type="mirror") +
+       scale_fill_manual(values= c("#6d2f20", "#df7e66", "#e09351", "#edc775", "#94b594", "#224b5e")) +
       theme_void() 
 }
 
@@ -66,12 +66,12 @@ plot_b <- stream_plot(data_product, "B")+
       theme(legend.position = "none")
 plot_c <- stream_plot(data_product, "C") +
     theme(
-      legend.position = c(0.5, 0.05),
+      legend.position = c(0.52, -0.05),
       legend.direction = "horizontal",
       legend.text = element_blank(),
       legend.title = element_blank(),
       legend.key.height = unit(0.75, "cm"),
-      legend.key.width = unit(3, "cm")
+      legend.key.width = unit(3.1, "cm")
       ) +
   guides(fill = guide_legend(nrow = 1))
 
@@ -79,24 +79,21 @@ plot_c <- stream_plot(data_product, "C") +
 source("helper_functions.R")
 ggdraw(plot_grid(plot_a, plot_b, plot_c, ncol=1)) +
   theme(plot.background = element_rect(fill="#fbf7f0", color="#fbf7f0"),
-        plot.margin = margin(50, 30, 30)) +
-  draw_text(text = "Number of Product Sales", x=0.5, y=1.15, fontface="bold", size= 30, family=font1, color="#4f2217") +
-  draw_text(text="Jan", x=0.05, y=1.023, size=15, family=font2, color="#4f2217") +
-  draw_text(text="Feb", x=0.35, y=1.023, size=15, family=font2, color="#4f2217") +
-  draw_text(text="Mar", x=0.65, y=1.023, size=15, family=font2, color="#4f2217") +
-  draw_text(text="Apr", x=0.95, y=1.023, size=15, family=font2, color="#4f2217") +
-  draw_text(text="Electronics", x=0.1, y=-0.0385, size=10, family=font2, fontface="bold", color="#fbf7f0") +
-  draw_text(text="Fashion", x=0.233, y=0.01, size=10, family=font2, fontface="bold", color="#fbf7f0") +
-  draw_text(text="Food & Beverages", x=0.368, y=-0.05, size=10, family=font2, fontface="bold", color="grey15") +
-  draw_text(text="Health & Beauty", x=0.501, y=-0.0385, size=10, family=font2, fontface="bold", color="grey15") +
-  draw_text(text="Home & Lifestyle", x=0.634, y=-0.037, size=10, family=font2, fontface="bold", color="grey15") +
-  draw_text(text="Sports & Travel", x=0.768, y=-0.0385, size=10, family=font2, fontface="bold", color="grey15") +
-  draw_text(text="Branch A", x=0.97, y=0.8, size=15, family=font1, hjust=0, color="#4f2217") +
-  draw_text(text="Branch B", x=0.97, y=0.5, size=15, family=font1, hjust=0, color="#4f2217") +
-  draw_text(text="Branch C", x=0.97, y=0.2, size=15, family=font1, hjust=0, color="#4f2217") 
-
-
-
+        plot.margin = margin(50, 30, 20)) +
+  draw_text(text = "Daily Product Sales", x=0.5, y=1.06, fontface="bold", size= 30, family=font1, color="#224b5e") +
+  draw_text(text="Jan", x=0.07, y=1.015, size=15, family=font2, color="#224b5e") +
+  draw_text(text="Feb", x=0.35, y=1.015, size=15, family=font2, color="#224b5e") +
+  draw_text(text="Mar", x=0.65, y=1.015, size=15, family=font2, color="#224b5e") +
+  draw_text(text="Apr", x=0.95, y=1.015, size=15, family=font2, color="#224b5e") +
+  draw_text(text="Electronics", x=0.088, y=-0.016, size=12, family=font2, fontface="bold", color="#fbf7f0") +
+  draw_text(text="Fashion", x=0.26, y=-0.016, size=12, family=font2, fontface="bold", color="#fbf7f0") +
+  draw_text(text="Food", x=0.435, y=-0.016, size=12, family=font2, fontface="bold", color="#fbf7f0") +
+  draw_text(text="Health", x=0.6, y=-0.016, size=12, family=font2, fontface="bold", color="#fbf7f0") +
+  draw_text(text="Home", x=0.775, y=-0.016, size=12, family=font2, fontface="bold", color="#fbf7f0") +
+  draw_text(text="Sports", x=0.95, y=-0.016, size=12, family=font2, fontface="bold", color="#fbf7f0") +
+  draw_text(text="Branch A", x=0.97, y=0.83, size=20, family=font1, hjust=0, color="#224b5e") +
+  draw_text(text="Branch B", x=0.97, y=0.5, size=20, family=font1, hjust=0, color="#224b5e") +
+  draw_text(text="Branch C", x=0.97, y=0.17, size=20, family=font1, hjust=0, color="#224b5e") 
 ```
 # Daily sales
 ```{r, message= FALSE}
