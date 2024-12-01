@@ -18,9 +18,6 @@ We'll be using a sales dataset from a supermakert chain [source](https://www.kag
 
 ```{r,  message=FALSE, expan}
 dataset <- readr::read_csv("data.csv")
-```
-
-```{r}
 head(dataset) |> 
   kableExtra::kable("html") 
 ```
@@ -32,7 +29,6 @@ dplyr::glimpse(dataset)
 
 # What are these folks buying?
 Let's check what are people buying...
-
 
 ```{r, message = FALSE, fig.height=8, fig.width=8, warning=FALSE}
 library(ggplot2)
@@ -69,6 +65,7 @@ stream_plot <- function(data, branch) {
   ylim(0, 65)
 }
 
+# Lets create the three individual plots
 plot_a <- stream_plot(data_product, "A") + 
       theme(legend.position = "none")
 plot_b <- stream_plot(data_product, "B")+ 
@@ -82,10 +79,9 @@ plot_c <- stream_plot(data_product, "C") +
     legend.key.height = unit(0.75, "cm"),
     legend.key.width = unit(3.1, "cm")
   ) +
-  guides(fill = guide_legend(nrow = 1)) # +
+  guides(fill = guide_legend(nrow = 1)) 
   
-# Let's put everything together
-
+# Putting everything together
 ggdraw(plot_grid(plot_a, plot_b, plot_c, ncol=1)) +
   theme(
     plot.background = element_rect(fill="#fbf7f0", color="#fbf7f0"),
@@ -107,6 +103,38 @@ ggdraw(plot_grid(plot_a, plot_b, plot_c, ncol=1)) +
   draw_text(text="Branch C", x=0.96, y=0.17, size=20, family=font1, hjust=0, color="#224b5e") 
 
 ```
+
+It can be also interesting to see what are the products being bought between genders. Let's check first the number of males and females in each branch.
+
+```{r, message=FALSE, warning=FALSE, fig.width= 8, fig.align='center'}
+dataset |> 
+  group_by(Branch, Gender) |> 
+  summarise(n = n(), .groups = "drop") |> 
+  group_by(Branch) |> 
+  arrange(desc(Gender)) |> 
+  mutate(proportion = paste0(round(n / sum(n) *100, 1), "%")) |> 
+  mutate(ypos = cumsum(n) - 0.5*n ) |> 
+  ggplot(aes(x = Branch, y = n, fill = Gender)) +
+  geom_col() +
+  scale_fill_manual(values= c("#8bdcc9",  "#fe957f")) +
+  custom_theme() +
+  geom_text(aes(y = ypos, label = proportion), color = "white", size = 5) +
+  labs(y = "", title = "Gender summary per branch")
+```
+
+```{r}
+data_product_gender <- dataset |> 
+  mutate(
+    date = lubridate::mdy(Date)
+  ) |> 
+  group_by(Branch, `Product line`, Gender) |>
+  summarise(
+    n_products_sold = sum(Quantity),
+    .groups = "drop"
+  )
+```
+
+
 # Daily sales
 ```{r, message= FALSE}
 library(dplyr)

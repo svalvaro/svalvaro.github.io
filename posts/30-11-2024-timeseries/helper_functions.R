@@ -47,3 +47,4 @@ font_add_google("Fira Sans Extra Condensed")
 font1 <- "Six Caps"
 font2 <- "Fira Sans Extra Condensed"
 
+
